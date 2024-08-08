@@ -1,7 +1,15 @@
-import {add} from "../src";
+class Game {
+  getCurrentPlayer() {
+    return "X";
+  }
+}
 
-describe('Tic Tac Toe Should', () => {
-    test("make 'X' do something", () => {
-        expect(add(2,3)).toBe(5);
-    })
+describe("Tic Tac Toe Should", () => {
+  test("make 'X' the first player", () => {
+    let game = new Game();
+
+    let result = game.getCurrentPlayer();
+
+    expect(result).toBe("X");
+  });
 });
