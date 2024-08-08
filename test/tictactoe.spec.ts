@@ -16,19 +16,10 @@ class Game {
 
   getWinner() {
     if (
-      this.squares[0] === "X" &&
-      this.squares[1] === "X" &&
-      this.squares[2] === "X"
+      this.squares[0] === this.squares[1] &&
+      this.squares[1] === this.squares[2]
     ) {
-      return "X";
-    }
-
-    if (
-      this.squares[0] === "O" &&
-      this.squares[1] === "O" &&
-      this.squares[2] === "O"
-    ) {
-      return "O";
+      return this.squares[0];
     }
   }
 }
@@ -67,7 +58,7 @@ describe("Tic Tac Toe Should", () => {
   test("make O winner with 3 marks in first horizontal row", () => {
     let game = new Game();
 
-    game.play(3);
+    game.play(7);
     game.play(0);
     game.play(5);
     game.play(1);
