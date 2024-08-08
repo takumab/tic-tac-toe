@@ -22,7 +22,14 @@ class Game {
     ) {
       return "X";
     }
-    return "O";
+
+    if (
+      this.squares[0] === "O" &&
+      this.squares[1] === "O" &&
+      this.squares[2] === "O"
+    ) {
+      return "O";
+    }
   }
 }
 
