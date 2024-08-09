@@ -29,6 +29,13 @@ class Game {
     ) {
       return this.squares[3];
     }
+
+    if (
+      this.squares[6] === this.squares[7] &&
+      this.squares[7] === this.squares[8]
+    ) {
+      return this.squares[6];
+    }
   }
 }
 
@@ -86,6 +93,33 @@ describe("Tic Tac Toe Should", () => {
     game.play(2);
     game.play(5);
     const winner = game.getWinner();
+
+    expect(winner).toBe("X");
+  });
+
+  test("make O winner with 3 marks in second horizontal row", () => {
+    const game = new Game();
+
+    game.play(0);
+    game.play(3);
+    game.play(6);
+    game.play(4);
+    game.play(8);
+    game.play(5);
+    const winner = game.getWinner();
+
+    expect(winner).toBe("O");
+  });
+
+  test("make X winner with 3 marks in third horizontal row", () => {
+    const game = new Game();
+
+    game.play(6);
+    game.play(1);
+    game.play(7);
+    game.play(4);
+    game.play(8);
+    let winner = game.getWinner();
 
     expect(winner).toBe("X");
   });
