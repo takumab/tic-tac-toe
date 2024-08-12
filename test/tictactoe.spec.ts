@@ -123,4 +123,18 @@ describe("Tic Tac Toe Should", () => {
 
     expect(winner).toBe("X");
   });
+
+  test("make O winner with 3 marks in third horizontal row", () => {
+    const game = new Game();
+
+    game.play(0);
+    game.play(6);
+    game.play(2);
+    game.play(7);
+    game.play(4);
+    game.play(8);
+    const winner = game.getWinner();
+
+    expect(winner).toBe("O");
+  });
 });
