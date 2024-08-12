@@ -53,14 +53,15 @@ describe("Tic Tac Toe Should", () => {
     game = new Game();
   });
   test("make 'X' the first player", () => {
-    let result = game.getCurrentPlayer();
+    const result = game.getCurrentPlayer();
 
     expect(result).toBe("X");
   });
 
   test("make 'O' the second player", () => {
     playGame(game, 1, [1]);
-    let result = game.getCurrentPlayer();
+
+    const result = game.getCurrentPlayer();
 
     expect(result).toBe("O");
   });
@@ -98,35 +99,25 @@ describe("Tic Tac Toe Should", () => {
   });
 
   test("make X winner with 3 marks in third horizontal row", () => {
-    game.play(6);
-    game.play(1);
-    game.play(7);
-    game.play(4);
-    game.play(8);
-    let winner = game.getWinner();
+    playGame(game, 5, [6, 1, 7, 4, 8]);
+
+    const winner = game.getWinner();
 
     expect(winner).toBe("X");
   });
 
   test("make O winner with 3 marks in third horizontal row", () => {
-    game.play(0);
-    game.play(6);
-    game.play(2);
-    game.play(7);
-    game.play(4);
-    game.play(8);
+    playGame(game, 6, [0, 6, 2, 7, 4, 8]);
+
     const winner = game.getWinner();
 
     expect(winner).toBe("O");
   });
 
   test("make X winner with 3 marks in first vertical column", () => {
-    game.play(0);
-    game.play(1);
-    game.play(3);
-    game.play(4);
-    game.play(6);
-    let winner = game.getWinner();
+    playGame(game, 5, [0, 1, 3, 4, 6]);
+
+    const winner = game.getWinner();
 
     expect(winner).toBe("X");
   });
