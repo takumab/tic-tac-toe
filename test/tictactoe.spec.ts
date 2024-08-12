@@ -41,68 +41,55 @@ class Game {
     }
   }
 }
+const playGame = (game: Game, plays: number, squares: number[]) => {
+  for (let i = 0; i < plays; i++) {
+    game.play(squares[i]);
+  }
+};
 
 describe("Tic Tac Toe Should", () => {
+  let game: Game;
+  beforeEach(() => {
+    game = new Game();
+  });
   test("make 'X' the first player", () => {
-    let game = new Game();
-
     let result = game.getCurrentPlayer();
 
     expect(result).toBe("X");
   });
 
   test("make 'O' the second player", () => {
-    let game = new Game();
-
-    game.play(1);
+    playGame(game, 1, [1]);
     let result = game.getCurrentPlayer();
 
     expect(result).toBe("O");
   });
 
   test("make X winner with 3 marks in first horizontal row", () => {
-    let game = new Game();
+    playGame(game, 5, [0, 3, 1, 5, 2]);
 
-    game.play(0);
-    game.play(3);
-    game.play(1);
-    game.play(5);
-    game.play(2);
     const winner = game.getWinner();
 
     expect(winner).toBe("X");
   });
 
   test("make O winner with 3 marks in first horizontal row", () => {
-    let game = new Game();
+    playGame(game, 6, [7, 0, 5, 1, 6, 2]);
 
-    game.play(7);
-    game.play(0);
-    game.play(5);
-    game.play(1);
-    game.play(6);
-    game.play(2);
     const winner = game.getWinner();
 
     expect(winner).toBe("O");
   });
 
   test("make X winner with 3 marks in second horizontal row", () => {
-    let game = new Game();
+    playGame(game, 5, [3, 1, 4, 2, 5]);
 
-    game.play(3);
-    game.play(1);
-    game.play(4);
-    game.play(2);
-    game.play(5);
     const winner = game.getWinner();
 
     expect(winner).toBe("X");
   });
 
   test("make O winner with 3 marks in second horizontal row", () => {
-    const game = new Game();
-
     game.play(0);
     game.play(3);
     game.play(6);
@@ -115,8 +102,6 @@ describe("Tic Tac Toe Should", () => {
   });
 
   test("make X winner with 3 marks in third horizontal row", () => {
-    const game = new Game();
-
     game.play(6);
     game.play(1);
     game.play(7);
@@ -128,8 +113,6 @@ describe("Tic Tac Toe Should", () => {
   });
 
   test("make O winner with 3 marks in third horizontal row", () => {
-    const game = new Game();
-
     game.play(0);
     game.play(6);
     game.play(2);
@@ -142,8 +125,6 @@ describe("Tic Tac Toe Should", () => {
   });
 
   test("make X winner with 3 marks in first vertical column", () => {
-    const game = new Game();
-
     game.play(0);
     game.play(1);
     game.play(3);
