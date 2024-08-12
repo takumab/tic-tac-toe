@@ -1,6 +1,12 @@
 class Game {
   private currentPlayer = "X";
   private squares: string[] = [];
+  private arrayOfWinningLines: number[][] = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+  ];
 
   getCurrentPlayer() {
     return this.currentPlayer;
@@ -16,19 +22,12 @@ class Game {
   }
 
   getWinner() {
-    const arrayOfWinningLines: number[][] = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-    ];
-
     for (
       let winningLineIndex = 0;
-      winningLineIndex < arrayOfWinningLines.length;
+      winningLineIndex < this.arrayOfWinningLines.length;
       winningLineIndex++
     ) {
-      const winningLine = arrayOfWinningLines[winningLineIndex];
+      const winningLine = this.arrayOfWinningLines[winningLineIndex];
       if (
         this.squares[winningLine[0]] === this.squares[winningLine[1]] &&
         this.squares[winningLine[1]] === this.squares[winningLine[2]]
