@@ -20,6 +20,7 @@ class Game {
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
+      [0, 3, 6],
     ];
 
     for (
@@ -135,5 +136,18 @@ describe("Tic Tac Toe Should", () => {
     const winner = game.getWinner();
 
     expect(winner).toBe("O");
+  });
+
+  test("make X winner with 3 marks in first vertical column", () => {
+    const game = new Game();
+
+    game.play(0);
+    game.play(1);
+    game.play(3);
+    game.play(4);
+    game.play(6);
+    let winner = game.getWinner();
+
+    expect(winner).toBe("X");
   });
 });
