@@ -16,25 +16,24 @@ class Game {
   }
 
   getWinner() {
-    if (
-      this.squares[0] === this.squares[1] &&
-      this.squares[1] === this.squares[2]
-    ) {
-      return this.squares[0];
-    }
+    const arrayOfWinningLines: number[][] = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+    ];
 
-    if (
-      this.squares[3] === this.squares[4] &&
-      this.squares[4] === this.squares[5]
+    for (
+      let winningLineIndex = 0;
+      winningLineIndex < arrayOfWinningLines.length;
+      winningLineIndex++
     ) {
-      return this.squares[3];
-    }
-
-    if (
-      this.squares[6] === this.squares[7] &&
-      this.squares[7] === this.squares[8]
-    ) {
-      return this.squares[6];
+      const winningLine = arrayOfWinningLines[winningLineIndex];
+      if (
+        this.squares[winningLine[0]] === this.squares[winningLine[1]] &&
+        this.squares[winningLine[1]] === this.squares[winningLine[2]]
+      ) {
+        return this.squares[winningLine[0]];
+      }
     }
   }
 }
