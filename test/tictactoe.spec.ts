@@ -90,12 +90,8 @@ describe("Tic Tac Toe Should", () => {
   });
 
   test("make O winner with 3 marks in second horizontal row", () => {
-    game.play(0);
-    game.play(3);
-    game.play(6);
-    game.play(4);
-    game.play(8);
-    game.play(5);
+    playGame(game, 6, [0, 3, 6, 4, 8, 5]);
+
     const winner = game.getWinner();
 
     expect(winner).toBe("O");
