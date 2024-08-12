@@ -14,11 +14,7 @@ class Game {
 
   play(square: number) {
     this.squares[square] = this.currentPlayer;
-    if (this.currentPlayer == "X") {
-      this.currentPlayer = "O";
-    } else {
-      this.currentPlayer = "X";
-    }
+    this.switchPlayer();
   }
 
   getWinner() {
@@ -34,6 +30,14 @@ class Game {
       ) {
         return this.squares[winningLine[0]];
       }
+    }
+  }
+
+  private switchPlayer() {
+    if (this.currentPlayer == "X") {
+      this.currentPlayer = "O";
+    } else {
+      this.currentPlayer = "X";
     }
   }
 }
