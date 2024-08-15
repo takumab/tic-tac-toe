@@ -41,6 +41,7 @@ class Game {
     }
   }
 }
+
 const playGame = (game: Game, plays: number, squares: number[]) => {
   for (let i = 0; i < plays; i++) {
     game.play(squares[i]);
