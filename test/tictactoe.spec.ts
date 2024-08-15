@@ -53,6 +53,27 @@ describe("Tic Tac Toe Should", () => {
   beforeEach(() => {
     game = new Game();
   });
+  test.each`
+    plays | squares               | expectedWinner
+    ${5}  | ${[0, 3, 1, 5, 2]}    | ${"X"}
+    ${6}  | ${[7, 0, 5, 1, 6, 2]} | ${"O"}
+    ${5}  | ${[3, 1, 4, 2, 5]}    | ${"X"}
+    ${6}  | ${[0, 3, 6, 4, 8, 5]} | ${"O"}
+    ${5}  | ${[6, 1, 7, 4, 8]}    | ${"X"}
+    ${6}  | ${[0, 6, 2, 7, 4, 8]} | ${"O"}
+    ${5}  | ${[0, 1, 3, 4, 6]}    | ${"X"}
+    ${6}  | ${[1, 0, 4, 3, 8, 6]} | ${"O"}
+  `(
+    "make player player $expectedWinner winner with 3 marks",
+    ({ plays, squares, expectedWinner }) => {
+      playGame(game, plays, squares);
+
+      const winner = game.getWinner();
+
+      expect(winner).toBe(expectedWinner);
+    },
+  );
+
   test("make 'X' the first player", () => {
     const result = game.getCurrentPlayer();
 
@@ -65,69 +86,5 @@ describe("Tic Tac Toe Should", () => {
     const result = game.getCurrentPlayer();
 
     expect(result).toBe("O");
-  });
-
-  test("make X winner with 3 marks in first horizontal row", () => {
-    playGame(game, 5, [0, 3, 1, 5, 2]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("X");
-  });
-
-  test("make O winner with 3 marks in first horizontal row", () => {
-    playGame(game, 6, [7, 0, 5, 1, 6, 2]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("O");
-  });
-
-  test("make X winner with 3 marks in second horizontal row", () => {
-    playGame(game, 5, [3, 1, 4, 2, 5]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("X");
-  });
-
-  test("make O winner with 3 marks in second horizontal row", () => {
-    playGame(game, 6, [0, 3, 6, 4, 8, 5]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("O");
-  });
-
-  test("make X winner with 3 marks in third horizontal row", () => {
-    playGame(game, 5, [6, 1, 7, 4, 8]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("X");
-  });
-
-  test("make O winner with 3 marks in third horizontal row", () => {
-    playGame(game, 6, [0, 6, 2, 7, 4, 8]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("O");
-  });
-
-  test("make X winner with 3 marks in first vertical column", () => {
-    playGame(game, 5, [0, 1, 3, 4, 6]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("X");
-  });
-
-  test("make O winner with 3 marks in first vertical column", () => {
-    playGame(game, 6, [1, 0, 4, 3, 8, 6]);
-
-    const winner = game.getWinner();
-
-    expect(winner).toBe("O");
   });
 });
