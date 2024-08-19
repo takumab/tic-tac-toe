@@ -55,6 +55,7 @@ describe("Tic Tac Toe Should", () => {
   beforeEach(() => {
     game = new Game();
   });
+
   test.each`
     plays | squares               | expectedWinner
     ${5}  | ${[0, 3, 1, 5, 2]}    | ${"X"}
