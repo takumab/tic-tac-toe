@@ -20,6 +20,9 @@ class Game {
     if (this.squares[square] && this.squares[square] !== "X") {
       throw new Error("Can't play on an already played squared: X");
     }
+    if (this.squares[square] && this.squares[square] !== "O") {
+      throw new Error("Can't play on an already played squared: O");
+    }
     this.squares[square] = this.currentPlayer;
     this.switchPlayer();
   }
@@ -110,5 +113,12 @@ describe("Tic Tac Toe Should", () => {
     expect(() => {
       game.play(1);
     }).toThrow("Can't play on an already played squared: X");
+  });
+
+  test("not allow O to play on an already played squared", () => {
+    game.play(0);
+    expect(() => {
+      game.play(0);
+    }).toThrow("Can't play on an already played squared: O");
   });
 });
