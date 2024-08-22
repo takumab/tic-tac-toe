@@ -75,6 +75,7 @@ describe("Tic Tac Toe Should", () => {
     ${5}  | ${[0, 1, 4, 3, 8]}    | ${"X"}
     ${6}  | ${[1, 0, 3, 4, 2, 8]} | ${"O"}
     ${5}  | ${[2, 0, 4, 1, 6]}    | ${"X"}
+    ${6}  | ${[0, 2, 3, 4, 5, 6]} | ${"O"}
   `(
     "make player $expectedWinner winner with 3 marks",
     ({ plays, squares, expectedWinner }) => {
