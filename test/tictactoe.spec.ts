@@ -9,6 +9,7 @@ class Game {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
+    [2, 4, 6],
   ];
 
   getCurrentPlayer() {
@@ -73,6 +74,7 @@ describe("Tic Tac Toe Should", () => {
     ${6}  | ${[0, 2, 3, 5, 1, 8]} | ${"O"}
     ${5}  | ${[0, 1, 4, 3, 8]}    | ${"X"}
     ${6}  | ${[1, 0, 3, 4, 2, 8]} | ${"O"}
+    ${5}  | ${[2, 0, 4, 1, 6]}    | ${"X"}
   `(
     "make player $expectedWinner winner with 3 marks",
     ({ plays, squares, expectedWinner }) => {
