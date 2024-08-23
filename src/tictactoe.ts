@@ -31,12 +31,7 @@ export class Game {
   }
 
   private findWinner() {
-    for (
-      let winningLineIndex = 0;
-      winningLineIndex < this.arrayOfWinningLines.length;
-      winningLineIndex++
-    ) {
-      const winningLine = this.arrayOfWinningLines[winningLineIndex];
+    for (const winningLine of this.arrayOfWinningLines) {
       if (
         this.squares[winningLine[0]] === this.squares[winningLine[1]] &&
         this.squares[winningLine[1]] === this.squares[winningLine[2]]
