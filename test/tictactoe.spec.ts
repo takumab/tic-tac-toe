@@ -17,11 +17,10 @@ class Game {
   }
 
   play(square: number) {
-    if (this.squares[square] && this.squares[square] !== "X") {
-      throw new Error("Can't play on an already played squared: X");
-    }
-    if (this.squares[square] && this.squares[square] !== "O") {
-      throw new Error("Can't play on an already played squared: O");
+    if (this.squares[square] && this.squares[square] !== this.currentPlayer) {
+      throw new Error(
+        `Can't play on an already played squared: ${this.currentPlayer}`,
+      );
     }
     this.squares[square] = this.currentPlayer;
     this.switchPlayer();
