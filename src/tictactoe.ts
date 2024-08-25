@@ -31,7 +31,8 @@ export class Game {
   }
 
   private findWinner() {
-    if (this.squares.join("").includes("XOXOXOXOX")) return "Tie game!";
+    const TIE_GAME = "XOXOXOXOX";
+    if (this.squares.join("").includes(TIE_GAME)) return "Tie game!";
 
     for (const winningLine of this.arrayOfWinningLines) {
       if (
