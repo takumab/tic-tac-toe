@@ -27,13 +27,16 @@ export class Game {
   }
 
   getWinner() {
-    return this.findWinner();
+    if (this.isTieGame()) return "Tie game!";
+    return this.checkForWinner();
   }
 
-  private findWinner() {
+  private isTieGame() {
     const TIE_GAME = "XOXOXOXOX";
-    if (this.squares.join("").includes(TIE_GAME)) return "Tie game!";
+    return this.squares.join("").includes(TIE_GAME);
+  }
 
+  private checkForWinner() {
     for (const winningLine of this.arrayOfWinningLines) {
       if (
         this.squares[winningLine[0]] === this.squares[winningLine[1]] &&
