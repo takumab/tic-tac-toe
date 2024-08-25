@@ -31,6 +31,8 @@ export class Game {
   }
 
   private findWinner() {
+    if (this.squares.join("").includes("XOXOXOXOX")) return "Tie game!";
+
     for (const winningLine of this.arrayOfWinningLines) {
       if (
         this.squares[winningLine[0]] === this.squares[winningLine[1]] &&

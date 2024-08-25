@@ -69,4 +69,10 @@ describe("Tic Tac Toe Should", () => {
       game.play(0);
     }).toThrow("Can't play on an already played squared: O");
   });
+
+  test("end in tie if no player has played 3 squares in a row", () => {
+    playGame(game, 9, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+    const result = game.getWinner();
+    expect(result).toEqual("Tie game!");
+  });
 });
